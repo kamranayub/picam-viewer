@@ -20,12 +20,13 @@
         <div id="player"></div>
     </div>
 
-    <script src="bower_components/promise-polyfill/promise-polyfill.min.js"></script>
+    <script src="bower_components/promise-polyfill/promise.min.js"></script>
     <script src="bower_components/fetch/fetch.js"></script>
     <script src="swfobject.js"></script>
     <script type="text/javascript">
         fetch('config.json').then(function (response) {
-            var config = response.json();
+            return response.json();
+        }).then(function (config) {
             var streamUrl = config.url;
 
             var player = document.getElementById('player');
