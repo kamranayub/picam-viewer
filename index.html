@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Picam Viewer</title>
+    <style type="text/css">
+        body {
+            background: black;
+            text-align: center;
+        }
+        
+        #player {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-wrapper">
+        <div id="player"></div>
+    </div>
+
+    <script src="bower_components/promise-polyfill/promise-polyfill.min.js"></script>
+    <script src="bower_components/fetch/fetch.js"></script>
+    <script src="swfobject.js"></script>
+    <script type="text/javascript">
+        fetch('config.json').then(function (response) {
+            var config = response.json();
+            var streamUrl = config.url;
+
+            var player = document.getElementById('player');
+            var parameters = {
+                src: streamUrl,
+                autoPlay: "true",
+                verbose: false,
+                controlBarAutoHide: "true",
+                controlBarPosition: "bottom",
+                plugin_hls: "flashlsOSMF.swf",
+                hls_minbufferlength: -1,
+                hls_maxbufferlength: 30,
+                hls_lowbufferlength: 3,
+                hls_seekmode: "KEYFRAME",
+                hls_startfromlevel: -1,
+                hls_seekfromlevel: -1,
+                hls_live_flushurlcache: false,
+                hls_info: true,
+                hls_debug: false,
+                hls_debug2: false,
+                hls_warn: true,
+                hls_error: true,
+                hls_fragmentloadmaxretry: -1,
+                hls_manifestloadmaxretry: -1,
+                hls_capleveltostage: false,
+                hls_maxlevelcappingmode: "downscale"
+            };
+
+            // Embed the player SWF:
+            swfobject.embedSWF(
+                "GrindPlayer.swf"
+                , "player"
+                , 1280
+                , 720
+                , "10.1.0"
+                , "expressInstall.swf"
+                , parameters
+                , {
+                    allowFullScreen: "true",
+                    wmode: "direct"
+                }
+                , {
+                    name: "player"
+                }
+            );
+        });
+    </script>
+</body>
+
+</html>
