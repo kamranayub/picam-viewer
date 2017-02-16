@@ -30,7 +30,7 @@
             var streamUrl = config.url;
 
             // build absolute url
-            if (url.indexOf('http://') < 0 || url.indexOf('https://') < 0) {
+            if (streamUrl.indexOf('http://') < 0 || streamUrl.indexOf('https://') < 0) {
                 if (streamUrl.indexOf('/') === 0) {
                     streamUrl = location.pathname + streamUrl;
                 } else if (streamUrl.indexOf('/') === 1) {
