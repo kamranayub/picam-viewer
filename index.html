@@ -3,6 +3,7 @@
 
 <head>
     <title>Picam Viewer</title>
+    <link rel="stylesheet" href="vendor/video-js.min.css">
     <style type="text/css">
         body {
             background: black;
@@ -16,13 +17,14 @@
 </head>
 
 <body>
-    <div class="video-wrapper">
-        <div id="player"></div>
-    </div>
+    <video id="player" preload="auto" controls class="video-js vjs-default-skin"></video>
 
-    <script src="bower_components/promise-polyfill/promise.min.js"></script>
-    <script src="bower_components/fetch/fetch.js"></script>
-    <script src="swfobject.js"></script>
+    <script src="vendor/promise.min.js"></script>
+    <script src="vendor/fetch.js"></script>
+    <script src="vendor/video.min.js"></script>
+    <script src="vendor/videojs-flash.min.js"></script>
+    <script src="vendor/videojs-contrib-hls.min.js"></script>
+
     <script type="text/javascript">
         fetch('config.json').then(function (response) {
             return response.json();
@@ -30,7 +32,7 @@
             var streamUrl = config.url;
 
             // build absolute url
-            if (streamUrl.indexOf('http://') < 0 || streamUrl.indexOf('https://') < 0) {
+            if (streamUrl.indexOf('http://') < 0 && streamUrl.indexOf('https://') < 0) {
                 if (streamUrl.indexOf('/') === 0) {
                     streamUrl = location.pathname + streamUrl;
                 } else if (streamUrl.indexOf('/') === 1) {
@@ -45,49 +47,17 @@
                     + streamUrl;
             }
 
-            var player = document.getElementById('player');
             var parameters = {
                 src: streamUrl,
-                autoPlay: "true",
-                verbose: false,
-                controlBarAutoHide: "true",
-                controlBarPosition: "bottom",
-                plugin_hls: "flashlsOSMF.swf",
-                hls_minbufferlength: -1,
-                hls_maxbufferlength: 30,
-                hls_lowbufferlength: 3,
-                hls_seekmode: "KEYFRAME",
-                hls_startfromlevel: -1,
-                hls_seekfromlevel: -1,
-                hls_live_flushurlcache: false,
-                hls_info: true,
-                hls_debug: false,
-                hls_debug2: false,
-                hls_warn: true,
-                hls_error: true,
-                hls_fragmentloadmaxretry: -1,
-                hls_manifestloadmaxretry: -1,
-                hls_capleveltostage: false,
-                hls_maxlevelcappingmode: "downscale"
+                type: 'application/x-mpegURL',
+                aspectRatio: "16:9",
+                fluid: true,
+                techOrder: ['flash', 'html5']
             };
 
-            // Embed the player SWF:
-            swfobject.embedSWF(
-                "GrindPlayer.swf"
-                , "player"
-                , 1280
-                , 720
-                , "10.1.0"
-                , "expressInstall.swf"
-                , parameters
-                , {
-                    allowFullScreen: "true",
-                    wmode: "direct"
-                }
-                , {
-                    name: "player"
-                }
-            );
+            // Configure videojs
+            var player = videojs('player', parameters);
+            player.play();
         });
     </script>
 </body>

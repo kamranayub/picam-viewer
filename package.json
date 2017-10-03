@@ -1,0 +1,22 @@
+{
+  "name": "picam-viewer",
+  "version": "1.0.0",
+  "description": "Picam viewer to view HLS streams using Video.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamranayub/picam-viewer.git"
+  },
+  "author": "Kamran Ayub",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kamranayub/picam-viewer/issues"
+  },
+  "homepage": "https://github.com/kamranayub/picam-viewer#readme",
+  "devDependencies": {
+    "serve": "^6.2.0"
+  }
+}
