@@ -48,11 +48,15 @@
             }
 
             var parameters = {
-                src: streamUrl,
-                type: 'application/x-mpegURL',
+                sources: [
+                    {
+                        src: streamUrl,
+                        type: 'application/x-mpegURL'
+                    }
+                ],
                 aspectRatio: "16:9",
                 fluid: true,
-                techOrder: ['flash', 'html5']
+                techOrder: ['html5', 'flash']
             };
 
             // Configure videojs
