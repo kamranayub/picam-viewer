@@ -10,4 +10,4 @@ Then, clone this repo into your nginx folder where you want to serve the web vie
 Used by my guide on creating a [RPi baby monitor](http://kamranicus.com/guides/raspberry-pi-3-baby-monitor).
 
 ---
-Based on Grind Player sample from flashls.js
+Based on video.js and videojs-contrib-hls
