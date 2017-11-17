@@ -1,0 +1,24 @@
+body {
+    background: black;
+    text-align: center;
+}
+
+#player {
+    margin: 0 auto;
+}
+
+.vjs-icon-placeholder.material-icons {
+    font-size: 1.8em;
+}
+
+.vjs-mute-mic-control,
+.vjs-record-control {
+    cursor: pointer;
+}
+
+.vjs-mute-mic-control .vjs-icon-placeholder.active {
+    color: rgb(118, 243, 118);
+}
+.vjs-record-control .vjs-icon-placeholder.active {
+    color: rgb(218, 35, 35);
+}

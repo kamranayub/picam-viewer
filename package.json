@@ -18,5 +18,8 @@
   "homepage": "https://github.com/kamranayub/picam-viewer#readme",
   "devDependencies": {
     "serve": "^6.2.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
   }
 }
