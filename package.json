@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/kamranayub/picam-viewer#readme",
   "devDependencies": {
-    "serve": "^7.1.3"
+    "serve": "^10.1.2"
   }
 }
